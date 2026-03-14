@@ -7,30 +7,28 @@
 
   display: flex;
   justify-content: center;
+  align-items: flex-start; // prevents button from stretching to full sidebar height
 
   @media only screen and (max-width: $bp-large) {
     grid-column: 1 / -1;
     grid-row: 1 / 2;
     justify-content: flex-end;
     align-items: center;
-    // Sit above the overlay so the button stays clickable when menu is open
     position: relative;
     z-index: 300;
   }
 }
 
-// Button has a proper large hit area
+// Button: explicit hit area, not stretched
 .navBtn {
   border: none;
   background: none;
   cursor: pointer;
-  padding: 1rem;
-  margin-top: 3rem;
 
-  // Center the bar span vertically inside
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  width: 5rem;
+  height: 3rem;
+  margin-top: 4rem;
 
   @media only screen and (max-width: $bp-large) {
     margin-top: 0;
@@ -38,10 +36,14 @@
   }
 }
 
-// The visual middle bar — pseudo-elements are the top & bottom bars
+// Middle bar — absolutely centered in the button
+// ::before and ::after are the top and bottom bars
 .bar {
-  position: relative;
-  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
   width: 4.5rem;
   height: 2px;
   background-color: #fff;
@@ -55,16 +57,16 @@
     width: 4.5rem;
     height: 2px;
     background-color: #fff;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
   }
 
-  &::before { top: -1.3rem; }
-  &::after  { top:  1.3rem; }
+  &::before { top: -1rem; }
+  &::after  { top:  1rem; }
 }
 
-// Open state: hamburger → X
-.navBtn.open .bar {
-  background-color: transparent;
+// Open state applied directly to the span — no compound selector needed
+.barOpen {
+  background-color: transparent; // hide middle bar
 
   &::before {
     top: 0;

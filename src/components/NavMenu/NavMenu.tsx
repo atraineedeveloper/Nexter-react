@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from './NavMenu.module.scss';
 import { navLinks } from '../../data/footer';
 
@@ -7,6 +8,10 @@ interface NavMenuProps {
 }
 
 export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
   return (
     <>
       <div

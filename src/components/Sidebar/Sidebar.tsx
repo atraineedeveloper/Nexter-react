@@ -9,12 +9,12 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
   return (
     <div className={styles.sidebar}>
       <button
-        className={`${styles.navBtn} ${isOpen ? styles.open : ''}`}
+        className={styles.navBtn}
         onClick={onToggle}
         aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
         aria-expanded={isOpen}
       >
-        <span className={styles.bar} />
+        <span className={`${styles.bar} ${isOpen ? styles.barOpen : ''}`} />
       </button>
     </div>
   );
