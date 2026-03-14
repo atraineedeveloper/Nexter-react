@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+
+.sidebar {
+  background-color: $color-primary;
+  grid-column: sidebar-start / sidebar-end;
+  grid-row: 1 / -1;
+
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    justify-content: flex-end;
+    align-items: center;
+    // Sit above the overlay so the button stays clickable when menu is open
+    position: relative;
+    z-index: 300;
+  }
+}
+
+// Button has a proper large hit area
+.navBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 1rem;
+  margin-top: 3rem;
+
+  // Center the bar span vertically inside
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: $bp-large) {
+    margin-top: 0;
+    margin-right: 2rem;
+  }
+}
+
+// The visual middle bar — pseudo-elements are the top & bottom bars
+.bar {
+  position: relative;
+  display: block;
+  width: 4.5rem;
+  height: 2px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 4.5rem;
+    height: 2px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+  }
+
+  &::before { top: -1.3rem; }
+  &::after  { top:  1.3rem; }
+}
+
+// Open state: hamburger → X
+.navBtn.open .bar {
+  background-color: transparent;
+
+  &::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  &::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}
