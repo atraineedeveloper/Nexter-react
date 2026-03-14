@@ -1,3 +1,5 @@
+import { imgUrl } from '../../utils/imgUrl';
+
 interface IconProps {
   id: string;
   className?: string;
@@ -6,7 +8,7 @@ interface IconProps {
 export default function Icon({ id, className }: IconProps) {
   return (
     <svg className={className}>
-      <use href={`/img/sprite.svg#${id}`} />
+      <use href={`${imgUrl('img/sprite.svg')}#${id}`} />
     </svg>
   );
 }

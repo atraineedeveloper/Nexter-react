@@ -1,6 +1,7 @@
 import type { Home } from '../../types';
 import Icon from '../Icon/Icon';
 import styles from './Homes.module.scss';
+import { imgUrl } from '../../utils/imgUrl';
 
 interface HomeCardProps {
   home: Home;
@@ -9,7 +10,7 @@ interface HomeCardProps {
 export default function HomeCard({ home }: HomeCardProps) {
   return (
     <div className={styles.home}>
-      <img src={`/img/${home.image}`} alt={home.name} className={styles.img} />
+      <img src={imgUrl(`img/${home.image}`)} alt={home.name} className={styles.img} />
       <Icon id="icon-heart-full" className={styles.like} />
       <h5 className={styles.name}>{home.name}</h5>
       <div className={styles.location}>

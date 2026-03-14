@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Realtors.module.scss';
 import { realtors } from '../../data/realtors';
+import { imgUrl } from '../../utils/imgUrl';
 
 export default function Realtors() {
   return (
@@ -10,7 +11,7 @@ export default function Realtors() {
         {realtors.map((r) => (
           <React.Fragment key={r.id}>
             <img
-              src={`/img/${r.image}`}
+              src={imgUrl(`img/${r.image}`)}
               alt={r.name}
               className={styles.img}
             />

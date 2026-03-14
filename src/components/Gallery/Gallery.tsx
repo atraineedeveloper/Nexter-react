@@ -1,5 +1,6 @@
 import styles from './Gallery.module.scss';
 import { galleryImages } from '../../data/gallery';
+import { imgUrl } from '../../utils/imgUrl';
 
 export default function Gallery() {
   return (
@@ -10,7 +11,7 @@ export default function Gallery() {
           className={`${styles.galleryItem} ${styles[`galleryItem${img.id}` as keyof typeof styles]}`}
         >
           <img
-            src={`/img/gal-${img.id}.jpeg`}
+            src={imgUrl(`img/gal-${img.id}.jpeg`)}
             alt={img.alt}
             className={styles.galleryImg}
           />

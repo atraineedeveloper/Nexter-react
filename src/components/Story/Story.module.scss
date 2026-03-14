@@ -3,8 +3,7 @@
 .pictures {
   background-color: $color-primary;
   grid-column: full-start / col-end 4;
-  background-image: linear-gradient(rgba($color-primary, 0.5), rgba($color-primary, 0.5)),
-    url('/img/back.jpg');
+  // background-image set via inline style in StoryPictures.tsx using imgUrl()
   background-size: cover;
 
   display: grid;
